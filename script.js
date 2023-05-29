@@ -114,39 +114,33 @@ blueButton.addEventListener("click", (e) => {
 
 // Feature #9 :
 
-let logo = document.getElementsByClassName("navbar-brand d-flex align-items-center").item(0);
+const logo = document.querySelector(".navbar-brand.d-flex.align-items-center");
 
-logo.addEventListener('keydown', (event) => {
-  let name = event.key;
-  switch (event.ctrlKey) {
-    // Si l'utilisateur presse la touche "a", l'ensemble de la page va être condensé 
-    // sur 4 colonnes Bootstrap à gauche de l'écran.
-    case name === "a":
-      document.body.className = "";
-      document.body.classList.add("col-4", "offset-md-4");
+logo.addEventListener("keydown", (event) => {
+  const key = event.key;
+  const body = document.body;
+
+  switch (key) {
+    case "a":
+      body.className = "";
+      body.classList.add("col-4");
       break;
 
-    // Si l'utilisateur presse la touche "y", l'ensemble de la page va être condensé 
-    // sur 4 colonnes Bootstrap au centre de l'écran.
-    case name === "y":
-      document.body.className = "";
-      document.body.classList.add("col-4");
+    case "y":
+      body.className = "";
+      body.classList.add("col-md-4", "offset-md-4");
       break;
 
-    // Si l'utilisateur presse la touche "p", l'ensemble de la page va être condensé 
-    // sur 4 colonnes Bootstrap à droite de l'écran.
-    case name === "p":
-      document.body.className = "";
-      document.body.classList.add("col-4", "offset-md-8");
+    case "p":
+      body.className = "";
+      body.classList.add("col-md-4", "offset-md-8");
       break;
-    
-    // Si l'utilisateur presse la touche "b", tout redevient normal.
-    case name === "b":
-      document.body.className = "";
+
+    case "b":
+      body.className = "";
       break;
-  } 
-}, false);
 
-
-
-
+    default:
+      break;
+  }
+});
